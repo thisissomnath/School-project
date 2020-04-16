@@ -1,0 +1,196 @@
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<ngx-spinner [fullScreen]="true" type="ball-clip-rotate-multiple" size="medium">
+    <p class="loading">Loading Awesomeness...</p>
+</ngx-spinner> -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <div class="card">
+                <div class="card-header">
+                    <h3>विठ्ठलराव थोरात इंग्लिश मेडिअम स्कूल भिगवण,
+                    ता.इंदापूर जि.पुणे मो-९८९०४३६४९०</h3>
+                      <p id="heading3">पहिली ते सातवीसाठी प्रवेश अर्ज, सन-२०२०/ २०२१ </p>
+                      <p id="note">* Required</p>
+                </div>
+                <div class="card-body">
+                    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(fb)">
+                        <div class="form-group">
+                            <label>पालकाचे नाव<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="fathername" placeholder="पालकाचे नाव"
+                                [ngClass]="{ 'is-invalid': submitted && f.fathername.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.fathername">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('fathername').hasError(validation.type) && (formGroup.get('fathername').dirty || formGroup.get('fathername').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>आईचे नाव<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="mothername" placeholder="आईचे नाव"
+                                [ngClass]="{ 'is-invalid': submitted && f.mothername.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.mothername">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('mothername').hasError(validation.type) && (formGroup.get('mothername').dirty || formGroup.get('mothername').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>पाल्याचे नाव<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="studentname" placeholder="पाल्याचे नाव"
+                                [ngClass]="{ 'is-invalid': submitted && f.studentname.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.studentname">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('studentname').hasError(validation.type) && (formGroup.get('studentname').dirty || formGroup.get('studentname').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>जन्मतारीख<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="DateOfBirth"
+                                placeholder="DD/MM/YYYY" bsDatepicker #d="bsDatepicker" [bsConfig]="dpconfig"
+                                [maxDate]="maxDate"
+                                [ngClass]="{ 'is-invalid': submitted && f.DateOfBirth.errors?.invalid }">
+                            <!-- <i class="fa fa-calendar"></i> -->
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.DateOfBirth">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('DateOfBirth').hasError(validation.type) && (formGroup.get('DateOfBirth').dirty || formGroup.get('DateOfBirth').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>कुटुंबाचे कायमचे राहण्याचे ठिकाण<p class="p12">*</p></label>
+                            <textarea class="form-control" formControlName="Address" placeholder="Enter Address"
+                                [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.Address">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('Address').hasError(validation.type) && (formGroup.get('Address').dirty || formGroup.get('Address').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>राष्ट्रीयत्व<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="nationality" placeholder="Enter Your Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.nationality.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.nationality">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('nationality').hasError(validation.type) && (formGroup.get('nationality').dirty || formGroup.get('nationality').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>विद्यार्थ्यांची मातृभाषा<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="mothertoung" placeholder="Enter Your Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.mothertoung.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.mothertoung">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('mothertoung').hasError(validation.type) && (formGroup.get('mothertoung').dirty || formGroup.get('mothertoung').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>आधार नंबर<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="Adharno" placeholder="Enter Your Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.Adharno.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.Adharno">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('Adharno').hasError(validation.type) && (formGroup.get('Adharno').dirty || formGroup.get('Adharno').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>प्रवेशाचा प्रकार<p class="p12">*</p></label>
+                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
+                            <select class="form-control" formControlName="Admissiontype" placeholder=" Choose Engineer">
+                                <option value="">Choose engg type</option>
+                                <!-- <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}"
+                                    [selected]="i == 0">{{engg.name}}</option> -->
+                            </select>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.Admissiontype">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('Admissiontype').hasError(validation.type) && (formGroup.get('Admissiontype').dirty || formGroup.get('Admissiontype').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>यापूर्वी इतर शाळेत शिक्षण घेत असल्यास इयत्ता व जुन्या शाळेचे नाव (यूडायस क्रमांक असल्यास )<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="UDISno" placeholder="Enter Your Name"
+                                [ngClass]="{ 'is-invalid': submitted && f.UDISno.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.UDISno">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('UDISno').hasError(validation.type) && (formGroup.get('UDISno').dirty || formGroup.get('UDISno').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>कोणत्या इयत्तेत प्रवेश घ्यायचा आहे ?<p class="p12">*</p></label>
+                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
+                            <select class="form-control" formControlName="standard" placeholder=" Choose Engineer">
+                                <option value="">Choose engg type</option>
+                                <!-- <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}"
+                                    [selected]="i == 0">{{engg.name}}</option> -->
+                            </select>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.standard">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('standard').hasError(validation.type) && (formGroup.get('standard').dirty || formGroup.get('standard').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>पालकांचा मो.नं.<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="Mobilenumber"
+                                placeholder="Enter Mobile Number"
+                                [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.Mobilenumber">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('Mobilenumber').hasError(validation.type) && (formGroup.get('Mobilenumber').dirty || formGroup.get('Mobilenumber').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>                          
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary" id="Registerbutton"
+                                [disabled]="!formGroup.valid">
+                                Register
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
