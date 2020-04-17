@@ -34,8 +34,7 @@ export class StudentRegistrationComponent implements OnInit {
     ],
     'nationality': [
       { type: 'required', message: '*Select Nationality' }
-      // { type: 'minlength', message: '*Name must be 3 character' }
-    ],
+      ],
     'mothertoung': [
       { type: 'required', message: '*Select mothertoung language' }
       // { type: 'minlength', message: '*Name must be 3 character' }
@@ -121,8 +120,7 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.required
       ])],
       nationality: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(3)
+        Validators.required
       ])],
       mothertoung: ['', Validators.compose([
         Validators.required,
