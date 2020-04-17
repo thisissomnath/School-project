@@ -21,34 +21,32 @@ export class StudentRegistrationComponent implements OnInit {
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'studentname': [
-      { type: 'required', message: '*Mother name is required' },
-      { type: 'minlength', message: '*Name must be 3 character' }
+      { type: 'required', message: '*Student name is required' },
+      { type: 'minlength', message: '*Student name must be 3 character' }
     ],
     'DateOfBirth': [
       {
-        type: 'required', message: '*Please select date'
+        type: 'required', message: '*Please select  birth date'
       }
     ],
     'Address': [
       { type: 'required', message: '*Address is required' },
     ],
     'nationality': [
-      { type: 'required', message: '*Father name is required' },
-      { type: 'minlength', message: '*Name must be 3 character' }
+      { type: 'required', message: '*Select Nationality' }
+      // { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'mothertoung': [
-      { type: 'required', message: '*Mother name is required' },
-      { type: 'minlength', message: '*Name must be 3 character' }
+      { type: 'required', message: '*Select mothertoung language' }
+      // { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'Adharno': [
-      { type: 'required', message: '*Mother name is required' },
       { type: 'minlength', message: '*Name must be 11 character' }
     ],
     'Admissiontype': [
       { type: 'required', message: '*Please select admission type' },
     ],
     'UDISno': [
-      { type: 'required', message: '*UDIS number is required' },
       { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'standard': [
@@ -61,13 +59,47 @@ export class StudentRegistrationComponent implements OnInit {
       { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
     ]
   }
+  classList: { name: string; }[];
+  standardList: { name: string; }[];
+  mothertounglanguage: { name: string; }[];
+  nationality: { name: string; }[];
   constructor(public fb: FormBuilder,
     public dpconfig : BsDatepickerConfig) {
     this.dpconfig.dateInputFormat='DD-MM-YYYY';
     this.dpconfig.isAnimated=true;  
     this.maxDate = new Date();
     this.maxDate.setDate(this.maxDate.getDate() + 0);
-     }
+    this.classList = [
+      { name: "नवीन प्रवेश" },
+      { name: "दुसऱ्या शाळेतून या शाळेत प्रवेश" }
+    ];
+    this.standardList = [
+      { name: "पहिली" },
+      { name: "दुसरी" },
+      { name: "तिसरी" },
+      { name: "चौथी" },
+      { name: "पाचवी" },
+      { name: "सहावी" },
+      { name: "सातवी" },
+      { name: "इतर" }
+    ];
+    this.nationality = [
+      { name: "भारतीय" },
+      { name: "इतर" }
+    ];
+    this.mothertounglanguage = [
+      { name: "मराठी" },
+      { name: "कश्मीरी" },
+      { name: "बंगाली" },
+      { name: "हिंदी" },
+      { name: "गुजराती" },
+      { name: "तेलुगु" },
+      { name: "कन्नड़" },
+      { name: "तमिळ" },
+      { name: "मल्याळम" },
+      { name: "इतर" }
+    ];     
+  }
   ngOnInit(): void {
     this.formGroup = this.fb.group({
       fathername: ['', Validators.compose([
@@ -97,14 +129,12 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.minLength(3)
       ])],
       Adharno: ['', Validators.compose([
-        Validators.required,
-        Validators.minLength(3)
+        Validators.minLength(11)
       ])],
       Admissiontype: ['', Validators.compose([
         Validators.required
       ])],
       UDISno: ['', Validators.compose([
-        Validators.required,
         Validators.minLength(3)
       ])],
       standard: ['', Validators.compose([

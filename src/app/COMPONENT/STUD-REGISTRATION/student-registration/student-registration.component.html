@@ -8,15 +8,16 @@
             <div class="card">
                 <div class="card-header">
                     <h3>विठ्ठलराव थोरात इंग्लिश मेडिअम स्कूल भिगवण,
-                    ता.इंदापूर जि.पुणे मो-९८९०४३६४९०</h3>
-                      <p id="heading3">पहिली ते सातवीसाठी प्रवेश अर्ज, सन-२०२०/ २०२१ </p>
-                      <p id="note">* Required</p>
+                        ता.इंदापूर जि.पुणे मो-९८९०४३६४९०</h3>
+                    <p id="heading3">पहिली ते सातवीसाठी प्रवेश अर्ज, सन-२०२०/ २०२१ </p>
+                    <p id="note">* Required</p>
                 </div>
                 <div class="card-body">
-                    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit(fb)">
+                    <form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label>पालकाचे नाव<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="fathername" placeholder="पालकाचे नाव"
+                            <input type="text" class="form-control" formControlName="fathername"
+                                placeholder="पालकाचे नाव"
                                 [ngClass]="{ 'is-invalid': submitted && f.fathername.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -42,7 +43,8 @@
                         </div>
                         <div class="form-group">
                             <label>पाल्याचे नाव<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="studentname" placeholder="पाल्याचे नाव"
+                            <input type="text" class="form-control" formControlName="studentname"
+                                placeholder="पाल्याचे नाव"
                                 [ngClass]="{ 'is-invalid': submitted && f.studentname.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -71,7 +73,8 @@
                         </div>
                         <div class="form-group">
                             <label>कुटुंबाचे कायमचे राहण्याचे ठिकाण<p class="p12">*</p></label>
-                            <textarea class="form-control" formControlName="Address" placeholder="Enter Address"
+                            <textarea class="form-control" formControlName="Address"
+                                placeholder="कुटुंबाचे कायमचे राहण्याचे ठिकाण"
                                 [ngClass]="{ 'is-invalid': submitted && f.Address.errors?.invalid }"></textarea>
                         </div>
                         <div class="validation-errors">
@@ -84,33 +87,43 @@
                         </div>
                         <div class="form-group">
                             <label>राष्ट्रीयत्व<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="nationality" placeholder="Enter Your Name"
-                                [ngClass]="{ 'is-invalid': submitted && f.nationality.errors?.invalid }">
-                        </div>
-                        <div class="validation-errors">
-                            <ng-container *ngFor="let validation of validation_messages.nationality">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('nationality').hasError(validation.type) && (formGroup.get('nationality').dirty || formGroup.get('nationality').touched)">
-                                    <span name="information-circle-outline"></span> {{ validation.message }}
-                                </div>
-                            </ng-container>
+                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
+                            <select class="form-control" formControlName="nationality" placeholder=" निवडा">
+                                <option value="">निवडा</option>
+                                <option *ngFor="let nationalityList of nationality; let i= index"
+                                    value="{{nationalityList.name}}" [selected]="i == 0">{{nationalityList.name}}
+                                </option>
+                            </select>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.nationality">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('nationality').hasError(validation.type) && (formGroup.get('nationality').dirty || formGroup.get('nationality').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>विद्यार्थ्यांची मातृभाषा<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="mothertoung" placeholder="Enter Your Name"
-                                [ngClass]="{ 'is-invalid': submitted && f.mothertoung.errors?.invalid }">
-                        </div>
-                        <div class="validation-errors">
-                            <ng-container *ngFor="let validation of validation_messages.mothertoung">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('mothertoung').hasError(validation.type) && (formGroup.get('mothertoung').dirty || formGroup.get('mothertoung').touched)">
-                                    <span name="information-circle-outline"></span> {{ validation.message }}
-                                </div>
-                            </ng-container>
+                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
+                            <select class="form-control" formControlName="mothertoung" placeholder=" निवडा">
+                                <option value="">निवडा</option>
+                                <option *ngFor="let mothertoung of mothertounglanguage; let i= index"
+                                    value="{{mothertoung.name}}" [selected]="i == 0">{{mothertoung.name}}</option>
+                            </select>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.mothertoung">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('mothertoung').hasError(validation.type) && (formGroup.get('mothertoung').dirty || formGroup.get('mothertoung').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>आधार नंबर<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="Adharno" placeholder="Enter Your Name"
+                            <label>आधार नंबर</label>
+                            <input type="text" class="form-control" formControlName="Adharno"
+                                placeholder="Enter Your Name"
                                 [ngClass]="{ 'is-invalid': submitted && f.Adharno.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -123,11 +136,10 @@
                         </div>
                         <div class="form-group">
                             <label>प्रवेशाचा प्रकार<p class="p12">*</p></label>
-                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
-                            <select class="form-control" formControlName="Admissiontype" placeholder=" Choose Engineer">
-                                <option value="">Choose engg type</option>
-                                <!-- <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}"
-                                    [selected]="i == 0">{{engg.name}}</option> -->
+                            <select class="form-control" formControlName="Admissiontype" placeholder=" निवडा">
+                                <option value="">निवडा</option>
+                                <option *ngFor="let list of classList; let i= index" value="{{list.name}}"
+                                    [selected]="i == 0">{{list.name}}</option>
                             </select>
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.Admissiontype">
@@ -139,8 +151,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label>यापूर्वी इतर शाळेत शिक्षण घेत असल्यास इयत्ता व जुन्या शाळेचे नाव (यूडायस क्रमांक असल्यास )<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="UDISno" placeholder="Enter Your Name"
+                            <label>यापूर्वी इतर शाळेत शिक्षण घेत असल्यास इयत्ता व जुन्या शाळेचे नाव (यूडायस क्रमांक
+                                असल्यास )</label>
+                            <input type="text" class="form-control" formControlName="UDISno"
+                                placeholder="यापूर्वी इतर शाळेत शिक्षण घेत असल्यास इयत्ता व जुन्या शाळेचे नाव"
                                 [ngClass]="{ 'is-invalid': submitted && f.UDISno.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -154,10 +168,10 @@
                         <div class="form-group">
                             <label>कोणत्या इयत्तेत प्रवेश घ्यायचा आहे ?<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
-                            <select class="form-control" formControlName="standard" placeholder=" Choose Engineer">
-                                <option value="">Choose engg type</option>
-                                <!-- <option *ngFor="let engg of enggList; let i= index" value="{{engg.name}}"
-                                    [selected]="i == 0">{{engg.name}}</option> -->
+                            <select class="form-control" formControlName="standard" placeholder=" निवडा">
+                                <option value="">निवडा</option>
+                                <option *ngFor="let stdList of standardList; let i= index" value="{{stdList.name}}"
+                                    [selected]="i == 0">{{stdList.name}}</option>
                             </select>
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.standard">
@@ -171,7 +185,7 @@
                         <div class="form-group">
                             <label>पालकांचा मो.नं.<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
-                                placeholder="Enter Mobile Number"
+                                placeholder="पालकांचा मो.नं."
                                 [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -181,11 +195,11 @@
                                     <span name="information-circle-outline"></span> {{ validation.message }}
                                 </div>
                             </ng-container>
-                        </div>                          
+                        </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" id="Registerbutton"
                                 [disabled]="!formGroup.valid">
-                                Register
+                                Submit
                             </button>
                         </div>
                     </form>
