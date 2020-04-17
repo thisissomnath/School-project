@@ -55,6 +55,34 @@
                                 </div>
                             </ng-container>
                         </div>
+                        <div class="form-group" id="radiocontrol">
+                            <label id="Gender">Gender<p class="p12">*</p></label><br>
+                            <div class="form-control">
+                              <div class="custom-control custom-radio custom-control-inline">
+                                    <input id="Male" type="radio" class="custom-control-input "
+                                        name="Gender" value="Male"  fromControlName="Gender" />
+                                    <label id="MaleGender" class="custom-control-label"
+                                        for="Male">Male</label>
+                                </div>                                
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input id="Female" type="radio" class="custom-control-input "
+                                        name="Gender" value="Female" fromControlName="Gender"  />
+                                    <label id="FemaleGender" class="custom-control-label"
+                                        for="Female">Female</label>
+                                </div>
+                            </div>
+                            <div [ngClass]="{ 'is-invalid': submitted && f.Gender.errors?.invalid }">
+                            </div>
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.Gender">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('Gender').hasError(validation.type) && (formGroup.get('Gender').dirty || formGroup.get('Gender').touched)">
+                                    <span> {{ validation.message }}</span>
+                                </div>
+                            </ng-container>
+                        </div>
+
                         <div class="form-group">
                             <label>जन्मतारीख<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfBirth"
@@ -104,6 +132,37 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Religion<p class="p12">*</p></label>
+                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
+                            <select class="form-control" formControlName="Religion" placeholder=" निवडा">
+                                <option value="">निवडा</option>
+                                <option *ngFor="let religionList of Religion; let i= index" value="{{religionList.name}}"
+                                    [selected]="i == 0">{{religionList.name}}</option>
+                            </select>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.Religion">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('Religion').hasError(validation.type) && (formGroup.get('Religion').dirty || formGroup.get('Religion').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Caste<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="caste"
+                                placeholder="Caste"
+                                [ngClass]="{ 'is-invalid': submitted && f.caste.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.caste">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('caste').hasError(validation.type) && (formGroup.get('caste').dirty || formGroup.get('caste').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
                             <label>विद्यार्थ्यांची मातृभाषा<p class="p12">*</p></label>
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
                             <select class="form-control" formControlName="mothertoung" placeholder=" निवडा">
@@ -123,7 +182,7 @@
                         <div class="form-group">
                             <label>आधार नंबर</label>
                             <input type="text" class="form-control" formControlName="Adharno"
-                                placeholder="Enter Your Name"
+                                placeholder="आधार नंबर"
                                 [ngClass]="{ 'is-invalid': submitted && f.Adharno.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -183,6 +242,24 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label>Trade<p class="p12">*</p></label>
+                            <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
+                            <select class="form-control" formControlName="trade" placeholder=" निवडा">
+                                <option value="">निवडा</option>
+                                <option *ngFor="let tradeList of trade; let i= index" value="{{tradeList.name}}"
+                                    [selected]="i == 0">{{tradeList.name}}</option>
+                            </select>
+                            <div class="validation-errors">
+                                <ng-container *ngFor="let validation of validation_messages.trade">
+                                    <div class="error-message text-danger"
+                                        *ngIf="formGroup.get('trade').hasError(validation.type) && (formGroup.get('trade').dirty || formGroup.get('trade').touched)">
+                                        <span name="information-circle-outline"></span> {{ validation.message }}
+                                    </div>
+                                </ng-container>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label>पालकांचा मो.नं.<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
                                 placeholder="पालकांचा मो.नं."
@@ -196,6 +273,49 @@
                                 </div>
                             </ng-container>
                         </div>
+                        <div class="form-group">
+                            <label>Email<p class="p12">*</p></label>
+                            <input type="email" class="form-control" formControlName="email"
+                                placeholder="Enter Your Email"
+                                [ngClass]="{ 'is-invalid': submitted && f.email.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.email">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('email').hasError(validation.type) && (formGroup.get('email').dirty || formGroup.get('email').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>वडिलांचा व्यवसाय<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="fatheroccupation"
+                                placeholder="वडिलांचा व्यवसाय"
+                                [ngClass]="{ 'is-invalid': submitted && f.fatheroccupation.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.fatheroccupation">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('fatheroccupation').hasError(validation.type) && (formGroup.get('fatheroccupation').dirty || formGroup.get('fatheroccupation').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="form-group">
+                            <label>वडिलांचे  वार्षिक उत्पन्न<p class="p12">*</p></label>
+                            <input type="text" class="form-control" formControlName="Anualincome"
+                                placeholder="वडिलांचे  वार्षिक उत्पन्न"
+                                [ngClass]="{ 'is-invalid': submitted && f.Anualincome.errors?.invalid }">
+                        </div>
+                        <div class="validation-errors">
+                            <ng-container *ngFor="let validation of validation_messages.Anualincome">
+                                <div class="error-message text-danger"
+                                    *ngIf="formGroup.get('Anualincome').hasError(validation.type) && (formGroup.get('Anualincome').dirty || formGroup.get('Anualincome').touched)">
+                                    <span name="information-circle-outline"></span> {{ validation.message }}
+                                </div>
+                            </ng-container>
+                        </div>
+
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary" id="Registerbutton"
                                 [disabled]="!formGroup.valid">
