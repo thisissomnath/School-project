@@ -50,10 +50,8 @@ export class StudentRegistrationComponent implements OnInit {
       // { type: 'minlength', message: '*Name must be 3 character' }
     ],
     'Adharno': [
-      { type: 'required', message: '*Mobile Number is Required' },
-      { type: 'maxlength', message: '*Mobile number maximum length should be only 10 number' },
-      { type: 'pattern', message: '*Enter valid mobile number' },
-      { type: 'minlength', message: '*Mobile number minumum lenght 10 number' }
+      { type: 'pattern', message: '*Enter valid Adhar number' },
+      { type: 'minlength', message: '*Adhar number minumum lenght 11 number' }, 
     ],
     'Admissiontype': [
       { type: 'required', message: '*Please select admission type' },
@@ -160,7 +158,7 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])],
-      Gender: ['male', Validators.compose([
+      Gender: ['', Validators.compose([
         Validators.required
       ])],
       DateOfBirth: ['', Validators.compose([
@@ -185,9 +183,9 @@ export class StudentRegistrationComponent implements OnInit {
       ])],
       Adharno: ['', Validators.compose([
         // Validators.required,
-        Validators.maxLength(10),
-        Validators.pattern('^[0-9]{10}$'),
-        Validators.minLength(10)
+        // Validators.maxLength(11),
+        Validators.pattern('^[0-9]{11}$'),
+        Validators.minLength(11)
       ])],
       Admissiontype: ['', Validators.compose([
         Validators.required

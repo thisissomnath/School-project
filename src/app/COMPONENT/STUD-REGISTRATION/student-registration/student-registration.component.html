@@ -182,7 +182,7 @@
                         <div class="form-group">
                             <label>आधार नंबर</label>
                             <input type="text" class="form-control" formControlName="Adharno"
-                                placeholder="आधार नंबर"
+                                placeholder="आधार नंबर" maxlength="11"
                                 [ngClass]="{ 'is-invalid': submitted && f.Adharno.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -262,7 +262,7 @@
                         <div class="form-group">
                             <label>पालकांचा मो.नं.<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Mobilenumber"
-                                placeholder="पालकांचा मो.नं."
+                                placeholder="पालकांचा मो.नं." maxlength="10"
                                 [ngClass]="{ 'is-invalid': submitted && f.Mobilenumber.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
