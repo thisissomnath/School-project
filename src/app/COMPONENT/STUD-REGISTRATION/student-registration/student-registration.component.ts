@@ -51,7 +51,7 @@ export class StudentRegistrationComponent implements OnInit {
     ],
     'Adharno': [
       { type: 'pattern', message: '*Enter valid Adhar number' },
-      { type: 'minlength', message: '*Adhar number minumum lenght 11 number' }, 
+      { type: 'minlength', message: '*Adhar number minumum lenght 11 number' },
     ],
     'Admissiontype': [
       { type: 'required', message: '*Please select admission type' },
@@ -80,7 +80,8 @@ export class StudentRegistrationComponent implements OnInit {
       { type: 'minlength', message: '*Father occupation must be 3 character' }
     ],
     'Anualincome': [
-      { type: 'required', message: '*Father Anual income is required' }
+      { type: 'required', message: '*Father Anual income is required' },
+      { type: 'pattern', message: '*Enter valid Amount' },
     ]
   }
   classList: { name: string; }[];
@@ -214,10 +215,9 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.minLength(3)
       ])],
       Anualincome: ['', Validators.compose([
-        Validators.required
+        Validators.required,
+        Validators.pattern('^[0-9]*$')
       ])],
-
-
     })
   }
   get f() {

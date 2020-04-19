@@ -58,17 +58,15 @@
                         <div class="form-group" id="radiocontrol">
                             <label id="Gender">Gender<p class="p12">*</p></label><br>
                             <div class="form-control">
-                              <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="Male" type="radio" class="custom-control-input "
-                                        name="Gender" value="Male"  fromControlName="Gender" />
-                                    <label id="MaleGender" class="custom-control-label"
-                                        for="Male">Male</label>
-                                </div>                                
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="Female" type="radio" class="custom-control-input "
-                                        name="Gender" value="Female" fromControlName="Gender"  />
-                                    <label id="FemaleGender" class="custom-control-label"
-                                        for="Female">Female</label>
+                                    <input id="Male" type="radio" class="custom-control-input " name="Gender"
+                                        value="Male" fromControlName="Gender" />
+                                    <label id="MaleGender" class="custom-control-label" for="Male">Male</label>
+                                </div>
+                                <div class="custom-control custom-radio custom-control-inline">
+                                    <input id="Female" type="radio" class="custom-control-input " name="Gender"
+                                        value="Female" fromControlName="Gender" />
+                                    <label id="FemaleGender" class="custom-control-label" for="Female">Female</label>
                                 </div>
                             </div>
                             <div [ngClass]="{ 'is-invalid': submitted && f.Gender.errors?.invalid }">
@@ -136,8 +134,8 @@
                             <!-- <input  class="custom-select" (change)="changeCity($event)" formControlName="Machine_purchase" placeholder="select Machine"> -->
                             <select class="form-control" formControlName="Religion" placeholder=" निवडा">
                                 <option value="">निवडा</option>
-                                <option *ngFor="let religionList of Religion; let i= index" value="{{religionList.name}}"
-                                    [selected]="i == 0">{{religionList.name}}</option>
+                                <option *ngFor="let religionList of Religion; let i= index"
+                                    value="{{religionList.name}}" [selected]="i == 0">{{religionList.name}}</option>
                             </select>
                             <div class="validation-errors">
                                 <ng-container *ngFor="let validation of validation_messages.Religion">
@@ -150,8 +148,7 @@
                         </div>
                         <div class="form-group">
                             <label>पोटजात<p class="p12">*</p></label>
-                            <input type="text" class="form-control" formControlName="caste"
-                                placeholder="पोटजात"
+                            <input type="text" class="form-control" formControlName="caste" placeholder="पोटजात"
                                 [ngClass]="{ 'is-invalid': submitted && f.caste.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -181,9 +178,8 @@
                         </div>
                         <div class="form-group">
                             <label>आधार नंबर</label>
-                            <input type="text" class="form-control" formControlName="Adharno"
-                                placeholder="आधार नंबर" maxlength="11"
-                                [ngClass]="{ 'is-invalid': submitted && f.Adharno.errors?.invalid }">
+                            <input type="text" class="form-control" formControlName="Adharno" placeholder="आधार नंबर"
+                                maxlength="11" [ngClass]="{ 'is-invalid': submitted && f.Adharno.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
                             <ng-container *ngFor="let validation of validation_messages.Adharno">
@@ -275,8 +271,7 @@
                         </div>
                         <div class="form-group">
                             <label>ई-मेल<p class="p12">*</p></label>
-                            <input type="email" class="form-control" formControlName="email"
-                                placeholder="ई-मेल"
+                            <input type="email" class="form-control" formControlName="email" placeholder="ई-मेल"
                                 [ngClass]="{ 'is-invalid': submitted && f.email.errors?.invalid }">
                         </div>
                         <div class="validation-errors">
@@ -302,7 +297,7 @@
                             </ng-container>
                         </div>
                         <div class="form-group">
-                            <label>वडिलांचे  वार्षिक उत्पन्न<p class="p12">*</p></label>
+                            <label>वडिलांचे वार्षिक उत्पन्न<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="Anualincome"
                                 placeholder="वडिलांचे  वार्षिक उत्पन्न"
                                 [ngClass]="{ 'is-invalid': submitted && f.Anualincome.errors?.invalid }">
