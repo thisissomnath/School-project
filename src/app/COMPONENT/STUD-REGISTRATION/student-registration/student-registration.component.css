@@ -47,3 +47,11 @@ select.ng-touched.ng-invalid {
    margin: 0px;
    margin-top: 0px;
  }
+ #male{
+  font-weight: normal;
+  margin-left: 10px;
+}
+#female{
+  font-weight: normal;
+  margin-left: 10px;
+}

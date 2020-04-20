@@ -24,7 +24,7 @@ export class StudentRegistrationComponent implements OnInit {
       { type: 'required', message: '*Student name is required' },
       { type: 'minlength', message: '*Student name must be 3 character' }
     ],
-    'Gender': [
+    'gender': [
       { type: 'required', message: '*Please select purchase type' }
     ],
     'DateOfBirth': [
@@ -159,7 +159,7 @@ export class StudentRegistrationComponent implements OnInit {
         Validators.required,
         Validators.minLength(3)
       ])],
-      Gender: ['', Validators.compose([
+      gender: ['', Validators.compose([
         Validators.required
       ])],
       DateOfBirth: ['', Validators.compose([
@@ -224,9 +224,13 @@ export class StudentRegistrationComponent implements OnInit {
     return this.formGroup.controls;
   }
   onSubmit() {
+    console.log(this.formGroup.value);
     this.submitted = true;
     if (this.formGroup.invalid) {
       return;
     }
+  }
+  changeGender(e){
+    console.log(e.target.value);
   }
 }

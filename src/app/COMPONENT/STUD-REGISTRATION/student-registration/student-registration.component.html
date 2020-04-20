@@ -55,32 +55,24 @@
                                 </div>
                             </ng-container>
                         </div>
-                        <div class="form-group" id="radiocontrol">
-                            <label id="Gender">Gender<p class="p12">*</p></label><br>
+                        <div class="form-group">
+                            <label for="gender">Gender:</label>
                             <div class="form-control">
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="Male" type="radio" class="custom-control-input " name="Gender"
-                                        value="Male" fromControlName="Gender" />
-                                    <label id="MaleGender" class="custom-control-label" for="Male">Male</label>
+                                    <input  type="radio"  value="male" name="gender" formControlName="gender"
+                                        (change)="changeGender($event)" >
+                                    <label id="male" for="male" >Male</label>
                                 </div>
                                 <div class="custom-control custom-radio custom-control-inline">
-                                    <input id="Female" type="radio" class="custom-control-input " name="Gender"
-                                        value="Female" fromControlName="Gender" />
-                                    <label id="FemaleGender" class="custom-control-label" for="Female">Female</label>
+                                    <input  type="radio"  value="female" name="gender"
+                                        formControlName="gender" (change)="changeGender($event)">
+                                    <label id="female" for="female" >Female</label>
                                 </div>
                             </div>
-                            <div [ngClass]="{ 'is-invalid': submitted && f.Gender.errors?.invalid }">
+                            <div *ngIf="f.gender.touched && f.gender.invalid" class="alert alert-danger">
+                                <div *ngIf="f.gender.errors.required">Name is required.</div>
                             </div>
                         </div>
-                        <div class="validation-errors">
-                            <ng-container *ngFor="let validation of validation_messages.Gender">
-                                <div class="error-message text-danger"
-                                    *ngIf="formGroup.get('Gender').hasError(validation.type) && (formGroup.get('Gender').dirty || formGroup.get('Gender').touched)">
-                                    <span> {{ validation.message }}</span>
-                                </div>
-                            </ng-container>
-                        </div>
-
                         <div class="form-group">
                             <label>जन्मतारीख<p class="p12">*</p></label>
                             <input type="text" class="form-control" formControlName="DateOfBirth"
